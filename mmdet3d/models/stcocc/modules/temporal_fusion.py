@@ -11,16 +11,13 @@ from mmdet3d.models.builder import HEADS
 class SparseFusion(BaseModule):
     def __init__(
             self,
+            top_k=None,
             history_num=8,
             single_bev_num_channels=None,
-            history_cat_conv_out_channels=None,
-            do_history=True,
-            group_size=2,
-            top_k=None,
             foreground_idx=None,
             num_classes=17,
             occ_embedims=32,
-            **kwargs,
+            **kwargs
     ):
         super(SparseFusion, self).__init__()
         self.single_bev_num_channels = single_bev_num_channels
@@ -30,12 +27,9 @@ class SparseFusion(BaseModule):
         self.history_num = history_num
         self.history_seq_ids = None
         self.history_sweep_time = None
-        self.do_history = do_history
-        self.history_count = 0
-        self.history_cam_sweep_freq = 0.5  # seconds between each frame
-        self.group_size = group_size
-        self.top_k = top_k
-        self.foreground_idx = foreground_idx
+        self.history_cam_sweep_freq = 0.5       # seconds between each frame
+        self.top_k = top_k                      # top_k sampling
+        self.foreground_idx = foreground_idx    # Set the foreground index
 
         self.occ_embedding = nn.Sequential(
             nn.Linear(num_classes, occ_embedims),

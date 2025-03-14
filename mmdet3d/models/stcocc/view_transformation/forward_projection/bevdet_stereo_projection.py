@@ -242,7 +242,7 @@ class BEVDetStereoForwardProjection(BEVDepth4D):
 
         cam_params_key_frame = [sensor2keyegos[0], ego2globals[0], intrins[0], post_augs[0], bda]
 
-        # adjust channel, TODO:ms_feat_key_frame
+        # adjust channel
         if self.adjust_channel_conv is not None:
             tran_feat_key_frame = self.adjust_channel_conv(tran_feat_key_frame)
 

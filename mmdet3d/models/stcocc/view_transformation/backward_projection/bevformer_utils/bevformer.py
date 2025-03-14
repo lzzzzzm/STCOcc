@@ -13,15 +13,6 @@ from .spatial_cross_attention import OA_MSDeformableAttention3D
 
 @TRANSFORMER.register_module()
 class BEVFormer(BaseModule):
-    """Implements the Detr3D transformer.
-    Args:
-        as_two_stage (bool): Generate query from encoder features.
-            Default: False.
-        num_feature_levels (int): Number of feature maps from FPN:
-            Default: 4.
-        two_stage_num_proposals (int): Number of proposals when set
-            `as_two_stage` as True. Default: 300.
-    """
 
     def __init__(self,
                  num_cams=6,

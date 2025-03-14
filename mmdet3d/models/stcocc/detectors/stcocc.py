@@ -1,7 +1,6 @@
-# Copyright (c) Phigent Robotics. All rights reserved.
-import cv2
-import numpy as np
+import os
 import copy
+import numpy as np
 
 import torch
 import torch.nn.functional as F
@@ -14,7 +13,6 @@ from mmdet3d.models import builder
 
 from mmdet3d.models.stcocc.losses.semkitti import geo_scal_loss, sem_scal_loss
 from mmdet3d.models.stcocc.losses.lovasz_softmax import lovasz_softmax
-
 
 def gen_dx_bx(xbound, ybound, zbound):
     dx = torch.Tensor([row[2] for row in [xbound, ybound, zbound]])
@@ -34,8 +32,6 @@ class STCOcc(CenterPoint):
                  occupancy_head=None,
                  # Flow Head
                  flow_head=None,
-                 # Option: Solofusion
-                 solofusion=None,
                  # Option: Temporalfusion
                  temporal_fusion=None,
                  # Other setting
@@ -53,9 +49,9 @@ class STCOcc(CenterPoint):
                  background_idx=None,
                  train_flow=False,
                  use_ms_feats=False,
-                 use_group_head=False,
                  train_top_k=None,
                  val_top_k=None,
+                 save_results=False,
                  **kwargs):
         super(STCOcc, self).__init__(**kwargs)
         # ---------------------- init params ------------------------------
@@ -74,7 +70,7 @@ class STCOcc(CenterPoint):
         self.background_idx = background_idx
         self.train_flow = train_flow
         self.use_ms_feats = use_ms_feats
-        self.use_group_head = use_group_head
+        self.save_results = save_results
         self.scene_can_bus_info = dict()
         self.scene_loss = dict()
         # ---------------------- init loss ------------------------------
@@ -328,7 +324,7 @@ class STCOcc(CenterPoint):
             # save for loss
             intermediate_occ_pred_dict['pred_voxel_semantic_1_{}'.format(2 ** (i + 1))] = occ_pred
             last_occ_pred = occ_pred.clone().detach()
-            # bev_feats shape: [bs, c, h, w]
+            # bev_feats shape: [bs, c, h, w], recover to occupancy with occ weight
             if bev_feat.dim() == 4:
                 bs, c, z, h, w = voxel_feat.shape
                 bev_feat = bev_feat.unsqueeze(2).repeat(1, 1, z, 1, 1)
@@ -390,6 +386,15 @@ class STCOcc(CenterPoint):
         return_dict['occ_results'] = pred_voxel_semantic_cls.cpu().numpy().astype(np.uint8)
         return_dict['flow_results'] = return_pred_voxel_flows.cpu().numpy().astype(np.float16)
         return_dict['index'] = [img_meta['index'] for img_meta in img_metas]
+        if self.save_results:
+            sample_idx = [img_meta['sample_idx'] for img_meta in img_metas]
+            scene_name = [img_meta['scene_name'] for img_meta in img_metas]
+            # check save_dir
+            for name in scene_name:
+                if not os.path.exists('results/{}'.format(name)):
+                    os.makedirs('results/{}'.format(name))
+            for i, idx in enumerate(sample_idx):
+                np.savez('results/{}/{}.npz'.format(scene_name[i], idx),semantics=return_dict['occ_results'][i], flow=return_dict['flow_results'][i])
         return [return_dict]
 
     def forward_train(self,

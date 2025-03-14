@@ -138,12 +138,12 @@ def add_ann_adj_info(extra_tag, dataroot, nuscenes_version, train_half=False):
 if __name__ == '__main__':
     dataset = 'nuscenes'
     version = 'v1.0'
-    train_half=True
+    train_half=False
     can_bus_path = 'data/nuscenes'
     train_version = f'{version}-trainval'
     # train_version = f'{version}-mini'
     root_path = './data/nuscenes'
-    extra_tag = 'bevdetv3-nuscenes'
+    extra_tag = 'stcocc-nuscenes'
     nuscenes_data_prep(
         train_half=train_half,
         root_path=root_path,

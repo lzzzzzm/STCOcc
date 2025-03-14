@@ -91,14 +91,6 @@ class OccPredictor(nn.Module):
 
 @TRANSFORMER_LAYER_SEQUENCE.register_module()
 class BEVFormerEncoder(TransformerLayerSequence):
-    """
-    Attention with both self and cross
-    Implements the decoder in DETR transformer.
-    Args:
-        return_intermediate (bool): Whether to return intermediate outputs.
-        coder_norm_cfg (dict): Config of last normalization layer. Default：
-            `LN`.
-    """
 
     def __init__(self,
                  *args,

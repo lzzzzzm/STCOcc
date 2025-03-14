@@ -21,16 +21,6 @@ from mmdet.models.utils import build_transformer
 
 @HEADS.register_module()
 class BEVFormerBackwardProjection(BaseModule):
-    """Head of Detr3D.
-    Args:
-        with_box_refine (bool): Whether to refine the reference points
-            in the decoder. Defaults to False.
-        as_two_stage (bool) : Whether to generate the proposal from
-            the outputs of encoder.
-        transformer (obj:`ConfigDict`): ConfigDict is used for building
-            the Encoder and Decoder.
-        bev_h, bev_w (int): spatial shape of BEV queries.
-    """
 
     def __init__(self,
                  *args,
@@ -106,17 +96,6 @@ class BEVFormerBackwardProjection(BaseModule):
                 history_fusion_params=None,
                 **kwargs):
         """Forward function.
-        Args:
-            mlvl_feats (tuple[Tensor]): Features from the upstream
-                network, each is a 5D-tensor with shape
-                (B, N, C, H, W).
-        Returns:
-            all_cls_scores (Tensor): Outputs from the classification head, \
-                shape [nb_dec, bs, num_query, cls_out_channels]. Note \
-                cls_out_channels should includes background.
-            all_bbox_preds (Tensor): Sigmoid outputs from the regression \
-                head with normalized coordinate format (cx, cy, w, l, cz, h, theta, vx, vy). \
-                Shape [nb_dec, bs, num_query, 9].
         """
         bs, num_cam = cam_params[0].shape[0], cam_params[0].shape[1]
         mlvl_feats[0] = mlvl_feats[0].reshape(bs, num_cam, *mlvl_feats[0].shape[-3:])
