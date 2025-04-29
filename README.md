@@ -1,14 +1,15 @@
-# STCOcc
+# <center> STCOcc: Sparse Spatial-Temporal Cascade Renovation for 3D Occupancy and Scene Flow Prediction </center>
 
 This is the official PyTorch implementation for our paper:
 
-![vis](./asserts/vis_res.jpg)
+> [**STCOcc: Sparse Spatial-Temporal Cascade Renovation for 3D Occupancy and Scene Flow Prediction**](https://arxiv.org/abs/2504.19749)
 
-## News🚀
+
+## 🚀 News
 
 * **[2025-03]** STCOcc is accepted to CVPR 2025.
 
-## Model Zoo
+## 🤗 Model Zoo
 
 We utilize 8 RTX4090 GPUs to train our model.
 
@@ -17,7 +18,7 @@ We utilize 8 RTX4090 GPUs to train our model.
 | r50_704x256_16f_openocc |  ~48   |  32h,~8.7GB   |  40.8  | 0.44 | [Google-drive](https://drive.google.com/file/d/1_Ici4fsOk30Eqtc-nqUMcsj8NGi_dcxe/view?usp=drive_link) |
 |  r50_704_256_16f_occ3d  |  ~36   |  21h,~7,7GB   |  41.7  |  -   | [Google-drive](https://drive.google.com/file/d/1ZbjYlzq9B7b_ac8lLXP_1gV7TRzL1TvX/view?usp=drive_link)                                            |
 
-## Environment
+## 🛠️Environment
 
 Install Pytorch 1.13 + CUDA 11.6
 
@@ -50,7 +51,7 @@ Due to the version of the dependencies, you may rise follow error, this [blog](h
 error: too few arguments for template template parameter "Tuple" detected during instantiation of class "pybind11::detail::tuple_caster<Tuple, Ts...> [with Tuple=std::pair, Ts=<T1, T2>]"  (721): here
 ```
 
-## Prepare Dataset
+## 📦 Prepare Dataset
 
 1. Download nuScenes from [nuScenes](https://www.nuscenes.org/nuscenes) 
 
@@ -107,7 +108,7 @@ Project
 │   │   ├── stcocc-nuscenes_infos_val.pkl
 ```
 
-## Training
+## 🎇 Training and Evaluation
 
 Train STCOcc with 8GPUs:
 
@@ -115,15 +116,13 @@ Train STCOcc with 8GPUs:
 bash tools/dist_train.sh config/stcocc/stcocc-r50-16f-openocc-12e.py 8
 ```
 
-## Evaluation
-
 Evaluate STCOcc with 6GPUs:
 
 ```eval
 bash tools/dist_test.sh config/stcocc/stcocc-r50-16f-openocc-12e.py path/to/ckpts 6
 ```
 
-## Visualization
+## 🎥 Visualization
 If you want to visualize the results, change the config setting `save_results` to `True` and run the evaluation script.
 
 To visualize the single occ results, you can run the following command:
