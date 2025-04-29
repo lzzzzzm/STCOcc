@@ -1,9 +1,13 @@
-# <center> STCOcc: Sparse Spatial-Temporal Cascade Renovation for 3D Occupancy and Scene Flow Prediction </center>
+<div align="center">
 
+# STCOcc: Sparse Spatial-Temporal Cascade Renovation for 3D Occupancy and Scene Flow Prediction
+
+</div>
 This is the official PyTorch implementation for our paper:
 
 > [**STCOcc: Sparse Spatial-Temporal Cascade Renovation for 3D Occupancy and Scene Flow Prediction**](https://arxiv.org/abs/2504.19749)
 
+https://github.com/lzzzzzm/STCOcc/blob/main/asserts/demo_video_.gif
 
 ## 🚀 News
 
