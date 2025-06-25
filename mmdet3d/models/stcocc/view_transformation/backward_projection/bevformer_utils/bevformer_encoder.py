@@ -215,6 +215,11 @@ class BEVFormerEncoder(TransformerLayerSequence):
         reference_points_depth = reference_points_cam[..., 2:3]
         reference_points_cam = reference_points_cam[..., 0:2] / torch.maximum(reference_points_depth, torch.ones_like(reference_points_depth) * eps)
 
+        # Bug!!
+        # Correct normalize is
+        # reference_points_cam[..., 0] /= ogfW
+        # reference_points_cam[..., 1] /= ogfH
+        # But for reproducing our results, we use the following normalization
         reference_points_cam[..., 0] /= ogfH
         reference_points_cam[..., 1] /= ogfW
 
