@@ -5,7 +5,7 @@
 </div>
 This is the official PyTorch implementation for our paper:
 
-> [**STCOcc: Sparse Spatial-Temporal Cascade Renovation for 3D Occupancy and Scene Flow Prediction**](https://arxiv.org/abs/2504.19749) 
+> [**STCOcc: Sparse Spatial-Temporal Cascade Renovation for 3D Occupancy and Scene Flow Prediction**](https://arxiv.org/abs/2504.19749)\
 > Zhimin Liao, Ping Wei*, Shuaijia Chen, Haoxuan Wang, Ziyang Ren                                     
 > *CVPR2025 ([arXiv 2506.03079](https://arxiv.org/abs/2504.19749))*
 
