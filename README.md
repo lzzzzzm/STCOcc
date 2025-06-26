@@ -5,7 +5,9 @@
 </div>
 This is the official PyTorch implementation for our paper:
 
-> [**STCOcc: Sparse Spatial-Temporal Cascade Renovation for 3D Occupancy and Scene Flow Prediction**](https://arxiv.org/abs/2504.19749)
+> [**STCOcc: Sparse Spatial-Temporal Cascade Renovation for 3D Occupancy and Scene Flow Prediction**](https://arxiv.org/abs/2504.19749) 
+> Zhimin Liao, Ping Wei*, Shuaijia Chen, Haoxuan Wang, Ziyang Ren                                     
+> *CVPR2025 ([arXiv 2506.03079](https://arxiv.org/abs/2504.19749))*
 
 ![demo](https://github.com/lzzzzzm/STCOcc/blob/main/asserts/demo_video_.gif)
 
@@ -135,6 +137,17 @@ python tools/vis_results.py --vis-single-data path/to/results
 ```
 More visualization options can be found in the `tools/vis_results.py` script.
 
+## 📄 Citation
+if you find our work useful, please consider citing:
+
+```bibtex
+@inproceedings{liao2025stcocc,
+  title={Stcocc: Sparse spatial-temporal cascade renovation for 3d occupancy and scene flow prediction},
+  author={Liao, Zhimin and Wei, Ping and Chen, Shuaijia and Wang, Haoxuan and Ren, Ziyang},
+  booktitle={Proceedings of the Computer Vision and Pattern Recognition Conference},
+  year={2025}
+}
+```
 
 ## Acknowledgement
 
