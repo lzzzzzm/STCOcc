@@ -119,13 +119,13 @@ Project
 Train STCOcc with 8GPUs:
 
 ```train
-bash tools/dist_train.sh config/stcocc/stcocc-r50-16f-openocc-12e.py 8
+bash tools/dist_train.sh config/stcocc/stcocc_r50_704x256_16f_openocc_12e.py 8
 ```
 
 Evaluate STCOcc with 6GPUs:
 
 ```eval
-bash tools/dist_test.sh config/stcocc/stcocc-r50-16f-openocc-12e.py path/to/ckpts 6
+bash tools/dist_test.sh config/stcocc/stcocc_r50_704x256_16f_openocc_12e.py path/to/ckpts 6
 ```
 
 ## 🎥 Visualization
