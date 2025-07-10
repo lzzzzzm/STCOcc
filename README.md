@@ -13,6 +13,8 @@ This is the official PyTorch implementation for our paper:
 
 ## 🚀 News
 
+* **[2025-07]** Check out our new work [**II-World**](https://github.com/lzzzzzm/II-World)
+
 * **[2025-03]** STCOcc is accepted to CVPR 2025.
 
 ## 🤗 Model Zoo
