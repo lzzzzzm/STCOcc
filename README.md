@@ -74,10 +74,14 @@ and unzip it to the `data/nuscenes` folder. These `*pkl` files can be generated 
 5. Download the pretrained weights from [Google Drive](https://drive.google.com/file/d/18Mxghwok1mlD1Pu2b16jjE13tszaxJUr/view?usp=drive_link).
 The pretrained weights is drived from [BEVDet](https://github.com/HuangJunJie2017/BEVDet), we just rename the weights to fit our model.
 
-5. Organize your folder structure as below:
+6. (Optional) Download the visualization car model [Google Drive](https://drive.google.com/file/d/1Uds-14smeKPYJkLC_DhH9ajap_zawfdi/view?usp=drive_link)
+
+7. Organize your folder structure as below:
 
 ```
 ├── project
+├── visualizer/
+│   ├── 3d_model.obj/ (optional)
 ├── data/
 │   ├── nuscenes/
 │   │   ├── samples/ 
