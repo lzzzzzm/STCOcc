@@ -248,7 +248,7 @@ def vis_occ_single_on_3d(data_path,
     # visualize the scene data
     occ_label = np.load(data_path)
     # occ_semantics = occ_label['semantics']
-    occ_semantics = occ_label['pred']
+    occ_semantics = occ_label['semantics']
     if vis_flow:
         # check if flow exists
         if 'flow' in occ_label.keys():
